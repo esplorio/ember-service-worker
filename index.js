@@ -145,7 +145,7 @@ module.exports = {
 
     let options = this._getOptions();
     let config = this._getConfig();
-    let scopeURL = options.scopeURL || config.scopeURL || this._getRootURL();
+    let scopeURL = options.scopeUrl || config.scopeUrl || this._getRootURL();
 
     return this._projectScopeURL = scopeURL;
   },
