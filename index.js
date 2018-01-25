@@ -70,6 +70,7 @@ module.exports = {
       minifyJS: this.app.options.minifyJS,
       plugins,
       rootURL: this._getRootURL(),
+      scopeURL: this._getScopeURL(),
       sourcemaps: this.app.options.sourcemaps
     });
 
@@ -135,6 +136,18 @@ module.exports = {
     let rootURL = options.rootUrl || config.rootURL || config.baseURL || '/';
 
     return this._projectRootURL = rootURL;
+  },
+
+  _getScopeURL() {
+    if (this._projectScopeURL) {
+      return this._projectScopeURL;
+    }
+
+    let options = this._getOptions();
+    let config = this._getConfig();
+    let scopeURL = options.scopeURL || config.scopeURL || this._getRootURL();
+
+    return this._projectScopeURL = scopeURL;
   },
 
   _getOptions() {
